@@ -14,7 +14,7 @@ var current_save: Dictionary = {
 		pos_x = 0,
 		pos_y = 0
 	},
-	items = [],
+	inventory_items = [],
 	persistence = [],
 	quests = [],
 }
@@ -24,6 +24,7 @@ func save_game() -> void:
 	print("Save Game")
 	update_player_data()
 	update_scene_path()
+	update_item_data()
 	
 	var save_file := FileAccess.open(SAVE_PATH + "save.sav", FileAccess.WRITE)
 	var save_json = JSON.stringify(current_save)
@@ -45,6 +46,8 @@ func load_game() -> void:
 	
 	PlayerManager.set_player_position(Vector2(current_save.player.pos_x, current_save.player.pos_y))
 	PlayerManager.set_health(current_save.player.hp, current_save.player.hp_max)
+	PlayerManager.INVENTORY_DATA.parse_save_data(current_save.inventory_items)
+	
 	await LevelManager.level_loaded_sig
 	
 	game_loaded_sig.emit()
@@ -65,3 +68,7 @@ func update_scene_path() -> void:
 		if child is Level:
 			scene_path = child.scene_file_path
 		current_save.scene_path = scene_path
+
+
+func update_item_data() -> void:
+	current_save.inventory_items = PlayerManager.INVENTORY_DATA.get_save_data()
