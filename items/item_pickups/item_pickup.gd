@@ -1,5 +1,5 @@
 @tool
-class_name ItemPickup extends Node2D
+class_name ItemPickup extends CharacterBody2D
 
 
 @export var item_data: ItemData: set = _set_item_data
@@ -17,6 +17,13 @@ func _ready() -> void:
 	# After Engine.is_editor_hint(), happens only when game running
 	area.body_entered.connect(_on_body_entered)
 	
+
+func _physics_process(delta: float) -> void:
+	var collision_info = move_and_collide(velocity*delta)
+	if collision_info:
+		velocity = velocity.bounce(collision_info.get_normal())
+	velocity -= velocity * delta * 4  # 4 = 'friction'
+
 
 func  _on_body_entered(body) -> void:
 	if body is Player:
