@@ -1039,6 +1039,7 @@ script = ExtResource("12_3rmxb")
 drops = Array[ExtResource("13_44jgq")]([SubResource("Resource_cd3y2"), SubResource("Resource_x5upf")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -6.0
 max_polyphony = 5
 
 [node name="DestroyEffectSprite" type="Sprite2D" parent="."]

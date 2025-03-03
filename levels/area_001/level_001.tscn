@@ -71,4 +71,16 @@ position = Vector2(93, 186)
 item_data = ExtResource("10_itn4o")
 
 [node name="Slime" parent="." instance=ExtResource("11_fdpmc")]
-position = Vector2(78, 442)
+position = Vector2(108, 444)
+
+[node name="Slime2" parent="." instance=ExtResource("11_fdpmc")]
+position = Vector2(59, 445)
+
+[node name="Slime3" parent="." instance=ExtResource("11_fdpmc")]
+position = Vector2(-56, 451)
+
+[node name="Slime4" parent="." instance=ExtResource("11_fdpmc")]
+position = Vector2(294, 311)
+
+[node name="Slime5" parent="." instance=ExtResource("11_fdpmc")]
+position = Vector2(369, 363)

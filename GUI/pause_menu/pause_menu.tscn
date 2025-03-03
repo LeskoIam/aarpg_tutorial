@@ -126,4 +126,5 @@ layout_mode = 2
 text = "Load"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+volume_db = -8.0
 max_polyphony = 5
